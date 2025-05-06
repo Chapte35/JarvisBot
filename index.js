@@ -27,9 +27,12 @@ for (const folder of commandFolders) {
 	}
 }
 
+//Ajout des EventListeners
 client.on(Events.InteractionCreate, async interaction => {
+	//si c'est bien une intéraction de type chat input
 	if (!interaction.isChatInputCommand()) return;
 
+	//Récupérer la commande correspondant à l'intéraction
 	const command = interaction.client.commands.get(interaction.commandName);
 
 	if (!command) {
@@ -37,6 +40,7 @@ client.on(Events.InteractionCreate, async interaction => {
 		return;
 	}
 
+	//Essayer d'executer la commande
 	try {
 		await command.execute(interaction);
 	} catch (error) {
@@ -49,12 +53,10 @@ client.on(Events.InteractionCreate, async interaction => {
 	}
 });
 
-// When the client is ready, run this code (only once).
-// The distinction between `client: Client<boolean>` and `readyClient: Client<true>` is important for TypeScript developers.
-// It makes some properties non-nullable.
+//Si le serveur a bien réussi a se lancer il log que tout est Ready
 client.once(Events.ClientReady, readyClient => {
 	console.log(`Ready! Logged in as ${readyClient.user.tag}`);
 });
 
-// Log in to Discord with your client's token
+// Connexion à Discord à l'aide du token client
 client.login(token);
