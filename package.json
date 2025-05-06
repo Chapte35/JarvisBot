@@ -9,6 +9,7 @@
   "author": "Chapte-35",
   "license": "ISC",
   "dependencies": {
-    "discord.js": "^14.19.3"
+    "discord.js": "^14.19.3",
+    "jarvisbot": "file:"
   }
 }
