@@ -5,15 +5,15 @@ const { SlashCommandBuilder } = require('discord.js');
 //on exporte la commande
 module.exports = {
 	data: new SlashCommandBuilder() //on créé une nouvelle instance
-		.setName('testjarvis') //on lui donne un nom qui sert à appeler la commande dans discord
+		.setName('supportdavid') //on lui donne un nom qui sert à appeler la commande dans discord
 		.setDescription('Jarvis got you don\'t worry')
 		.addStringOption(option =>
-			option.setName('jarvinputest')
+			option.setName('cardnb')
 				.setDescription('Number of cards J.A.R.V.I.S. will send you')
 				.setRequired(true)), //une description
 	async execute(interaction) { //la réponse
-		const jarvInput = interaction.options.getString('jarvinputest')
-		await interaction.reply('You sent : : ' + jarvInput);
+		const jarvInput = interaction.options.getString('cardnb')
+		await interaction.reply('You asked for ' + jarvInput + " Trello cards");
 		await fetch('https://edazot.app.n8n.cloud/webhook-test/b0dc8749-f899-4d5e-8bad-410a2ac8eeca', {
 			method: 'POST',
 			headers: {
