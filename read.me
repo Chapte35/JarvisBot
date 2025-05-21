@@ -2,7 +2,7 @@ protocole d'installation :
 
 prérequis :
 
-nodejs - git
+nodejs - git - PM2 (avec node)
 
 1- git clone le projet https://github.com/Chapte35/JarvisBot.git
 
@@ -25,6 +25,16 @@ ex :
 
 4-lancer le serveur
 
-    node index.js
+    # Démarrer le bot
+    pm2 start index.js --name "jarvisbot"
+
+    # Voir les logs
+    pm2 logs
+
+    # Arrêter le bot
+    pm2 stop "jarvisbot"
+
+    # Redémarrer le bot
+    pm2 restart "jarvisbot"
 
 5 - Documentation externe : discord.js https://discordjs.guide/
