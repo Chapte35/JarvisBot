@@ -1,40 +1,104 @@
-protocole d'installation :
+# Guide d'installation de JarvisBot
 
-prérequis :
+Ce guide décrit les étapes pour installer, configurer et exécuter JarvisBot, un bot Discord basé sur discord.js.
 
-nodejs - git - PM2 (avec node)
+## Prérequis
 
-1- git clone le projet https://github.com/Chapte35/JarvisBot.git
+Avant de commencer, assurez-vous d'avoir installé :
+- [Node.js](https://nodejs.org/) (version LTS recommandée)
+- [Git](https://git-scm.com/)
+- PM2 (gestionnaire de processus pour Node.js)
+  ```bash
+  npm install -g pm2
+  ```
 
-2- terminal npm i
-installer les dependances discord js avec node
+## Installation
 
-3- config.json => changer les valeurs si nouveau serveur ou bot / bot token
-ex :
-    {
-    "token":" ici => discord bot token",
-    "clientId": " ici => ID du client bot",
-    "guildId": " ici => ID du serveur "
-    }
+### 1. Cloner le projet
 
-2- dossier commands/  créer des dossier pour ranger les commandes
+```bash
+git clone https://github.com/Chapte35/JarvisBot.git
+cd JarvisBot
+```
 
-        ex : commands/utility/ping.js
+### 2. Installer les dépendances
 
-        pour créer des commandes, se réferer a la documentation officielle : https://discordjs.guide/slash-commands/response-methods.html#ephemeral-responses
+```bash
+npm install
+```
 
-4-lancer le serveur
+### 3. Configuration
 
-    # Démarrer le bot
-    pm2 start index.js --name "jarvisbot"
+Créez un fichier `config.json` à la racine du projet avec les informations suivantes :
 
-    # Voir les logs
-    pm2 logs
+```json
+{
+    "token": "VOTRE_TOKEN_BOT_DISCORD",
+    "clientId": "ID_CLIENT_DU_BOT",
+    "guildId": "ID_DU_SERVEUR_DISCORD"
+}
+```
 
-    # Arrêter le bot
-    pm2 stop "jarvisbot"
+> **Note :** Pour obtenir ces valeurs, consultez le [portail des développeurs Discord](https://discord.com/developers/applications).
 
-    # Redémarrer le bot
-    pm2 restart "jarvisbot"
+### 4. Structure des commandes
 
-5 - Documentation externe : discord.js https://discordjs.guide/
+Les commandes sont organisées dans des dossiers thématiques sous le répertoire `commands/`. Par exemple :
+
+```
+commands/
+  ├── utility/
+  │   ├── ping.js
+  │   └── help.js
+  ├── admin/
+  │   └── ...
+  └── fun/
+      └── ...
+```
+
+Pour créer de nouvelles commandes, consultez la [documentation officielle de discord.js](https://discordjs.guide/slash-commands/response-methods.html#ephemeral-responses).
+
+### 5. Déploiement des commandes
+
+Après avoir créé ou modifié des commandes, déployez-les sur Discord :
+
+```bash
+node deploy-commands.js
+```
+
+### 6. Lancement du bot
+
+#### Avec PM2 (recommandé pour la production)
+
+```bash
+# Démarrer le bot
+pm2 start index.js --name "jarvisbot"
+
+# Voir les logs
+pm2 logs jarvisbot
+
+# Arrêter le bot
+pm2 stop jarvisbot
+
+# Redémarrer le bot
+pm2 restart jarvisbot
+```
+
+#### En mode développement
+
+```bash
+node index.js
+```
+
+## Dépannage
+
+Si vous rencontrez des problèmes :
+1. Vérifiez que les tokens et IDs dans `config.json` sont corrects
+2. Assurez-vous que le bot dispose des permissions nécessaires sur Discord
+3. Consultez les logs avec `pm2 logs jarvisbot`
+
+## Documentation utile
+
+- [Guide discord.js](https://discordjs.guide/)
+- [Documentation de l'API discord.js](https://discord.js.org/#/docs)
+- [Documentation de PM2](https://pm2.keymetrics.io/docs/usage/quick-start/)
