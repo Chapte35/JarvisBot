@@ -1,19 +1,30 @@
-protocole d'installation : 
+protocole d'installation :
+
+prérequis :
+
+nodejs - git
+
 1- git clone le projet https://github.com/Chapte35/JarvisBot.git
 
 2- terminal npm i
+installer les dependances discord js avec node
 
-3- rajouter une commande :
-    1- config.json => changer les valeurs
-
+3- config.json => changer les valeurs si nouveau serveur ou bot / bot token
+ex :
     {
-	"token":" ici => discord bot token",
-	"clientId": " ici => ID du client bot",
-	"guildId": " ici => ID du serveur "
+    "token":" ici => discord bot token",
+    "clientId": " ici => ID du client bot",
+    "guildId": " ici => ID du serveur "
     }
 
-    2- dossier commands \utility (ou créer dossier) 
-        ex : ping.js
+2- dossier commands/  créer des dossier pour ranger les commandes
+
+        ex : commands/utility/ping.js
+
+        pour créer des commandes, se réferer a la documentation officielle : https://discordjs.guide/slash-commands/response-methods.html#ephemeral-responses
 
 4-lancer le serveur
+
     node index.js
+
+5 - Documentation externe : discord.js https://discordjs.guide/
