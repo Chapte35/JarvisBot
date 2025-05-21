@@ -14,7 +14,7 @@ module.exports = {
 	async execute(interaction) { //la réponse
 		const prompt = interaction.options.getString('jarvinput')
 		await interaction.reply('Jarvis is answering your prompt: ' + prompt);
-		await fetch('https://edazot.app.n8n.cloud/webhook/b0dc8749-f899-4d5e-8bad-410a2ac8eeca', {
+		await fetch('https://n8n.edazot.ch/webhook/b0dc8749-f899-4d5e-8bad-410a2ac8eeca', {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
