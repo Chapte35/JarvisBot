@@ -1,6 +1,7 @@
 // 2.créer sa commande
 //on créé/appelle la dépendance SlashCommandBuilder
 const { SlashCommandBuilder } = require('discord.js');
+const { n8nurl } = require('./config.json');
 
 //on exporte la commande
 module.exports = {
@@ -14,7 +15,7 @@ module.exports = {
 	async execute(interaction) { //la réponse
 		const jarvInput = interaction.options.getString('cardnb')
 		await interaction.reply('You asked for ' + jarvInput + " Trello cards");
-		await fetch('https://n8n.edazot.ch/webhook/b0dc8749-f899-4d5e-8bad-410a2ac8eeca', {
+		await fetch(n8nurl, {
 			method: 'POST',
 			headers: {
 				'Accept': 'application/json',
